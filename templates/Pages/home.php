@@ -36,14 +36,6 @@ $checkConnection = function (string $name) {
                 $error .= '<br />' . $attributes['message'];
             }
         }
-        if ($name === 'debug_kit') {
-            $error = 'Try adding your current <b>top level domain</b> to the
-                <a href="https://book.cakephp.org/debugkit/4/en/index.html#configuration" target="_blank">DebugKit.safeTld</a>
-            config and reload.';
-            if (!in_array('sqlite', \PDO::getAvailableDrivers())) {
-                $error .= '<br />You need to install the PHP extension <code>pdo_sqlite</code> so DebugKit can work properly.';
-            }
-        }
     }
 
     return compact('connected', 'error');
@@ -67,7 +59,9 @@ endif;
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake', 'home']) ?>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'home']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -185,7 +179,7 @@ endif;
                             <?php if ($result['connected']) : ?>
                                 <li class="bullet success">DebugKit can connect to the database.</li>
                             <?php else : ?>
-                                <li class="bullet problem">There are configuration problems present which need to be fixed:<br /><?= $result['error'] ?></li>
+                                <li class="bullet problem">DebugKit is <strong>not</strong> able to connect to the database.<br /><?= $result['error'] ?></li>
                             <?php endif; ?>
                         <?php else : ?>
                             <li class="bullet problem">DebugKit is <strong>not</strong> loaded.</li>
@@ -206,9 +200,9 @@ endif;
                     <div class="column links">
                         <h3>Help and Bug Reports</h3>
                         <a target="_blank" rel="noopener" href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-                        <a target="_blank" rel="noopener" href="https://slack-invite.cakephp.org/">Slack</a>
+                        <a target="_blank" rel="noopener" href="http://cakesf.herokuapp.com/">Slack</a>
                         <a target="_blank" rel="noopener" href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                        <a target="_blank" rel="noopener" href="https://discourse.cakephp.org/">CakePHP Forum</a>
+                        <a target="_blank" rel="noopener" href="http://discourse.cakephp.org/">CakePHP Forum</a>
                     </div>
                 </div>
                 <hr>
