@@ -38,6 +38,8 @@ class KineticdataTable extends Table
         parent::initialize($config);
 
         $this->setTable('kineticdata');
+        $this->setDisplayField('id');
+        $this->setPrimaryKey('id');
     }
 
     /**

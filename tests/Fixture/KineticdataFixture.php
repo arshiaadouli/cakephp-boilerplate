@@ -19,6 +19,7 @@ class KineticdataFixture extends TestFixture
     {
         $this->records = [
             [
+                'id' => 1,
                 'Monomer' => 'Lorem ipsum dolor sit amet',
                 'tres' => 1,
                 'Conversion' => 1,

@@ -121,6 +121,9 @@ class UsersController extends AppController
                 'controller' => 'Monomers',
                 'action' => 'index',
             ]);
+            var_dump($result);
+            $session = $this->request->getSession();
+            $session->write('user', $result);
 
             return $this->redirect($redirect);
         }
@@ -130,10 +133,17 @@ class UsersController extends AppController
         }
     }
 
-    // public function logout()
-    // {
-    //     return $this->redirect($this->Auth->logout());
-    // }
+    public function logout()
+    {
+        $result = $this->Authentication->getResult();
+        // regardless of POST or GET, redirect if user is logged in
+        if ($result->isValid()) {
+            $this->Authentication->logout();
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+        }
+    }
+
+
 
 
 }

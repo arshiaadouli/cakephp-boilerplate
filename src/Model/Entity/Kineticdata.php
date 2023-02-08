@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
 /**
  * Kineticdata Entity
  *
+ * @property int $id
  * @property string $Monomer
  * @property float $tres
  * @property float $Conversion
